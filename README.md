@@ -92,6 +92,32 @@ A aplicação consome a API do NLW Agents Server:
 - `/` - Página inicial com listagem de salas
 - `/room/:roomId` - Página individual da sala
 
+## 📁 Estrutura de Pastas
+
+```
+letmeask-agents-web/
+├── public/                    # Arquivos públicos estáticos
+├── src/                      # Código fonte da aplicação
+│   ├── components/           # Componentes React reutilizáveis
+│   │   └── ui/              # Componentes UI do shadcn/ui
+│   │       └── button.tsx   # Componente de botão
+│   ├── lib/                 # Utilitários e configurações
+│   │   └── utils.ts         # Funções auxiliares
+│   ├── pages/               # Páginas da aplicação
+│   │   ├── create-room.tsx  # Página de criação de sala
+│   │   └── room.tsx         # Página individual da sala
+│   ├── app.tsx              # Componente principal da aplicação
+│   ├── main.tsx             # Ponto de entrada da aplicação
+│   ├── index.css            # Estilos globais e Tailwind
+│   └── vite-env.d.ts        # Declarações de tipos do Vite
+├── .vscode/                  # Configurações do VS Code
+├── components.json           # Configuração do shadcn/ui
+├── package.json              # Dependências e scripts
+├── tsconfig.json             # Configuração do TypeScript
+├── vite.config.ts            # Configuração do Vite
+└── biome.jsonc               # Configuração do Biome
+```
+
 ---
 
 Desenvolvido com ❤️ durante o evento NLW da Rocketseat
