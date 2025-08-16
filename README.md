@@ -86,9 +86,11 @@ O projeto utiliza **shadcn/ui** com as seguintes configurações:
 
 ### 🏷️ Salas Individuais
 - **Visualização de perguntas** - Lista todas as perguntas da sala
-- **Formulário de perguntas** - Interface para adicionar novas perguntas
+- **Formulário de perguntas** - Interface para adicionar novas perguntas com integração completa à API
+- **Criação de perguntas** - Sistema completo de POST para `/rooms/:roomId/questions` com validação
 - **Status de respostas** - Indicador visual do progresso de geração de respostas por IA
 - **Timestamps relativos** - Exibição de quando as perguntas foram criadas
+- **Sincronização automática** - Cache invalidado automaticamente após criação de perguntas
 - **Navegação** - Botão para retornar à página inicial e acesso à funcionalidade de áudio
 
 ### ⚡ Otimizações
@@ -100,8 +102,11 @@ O projeto utiliza **shadcn/ui** com as seguintes configurações:
 
 A aplicação consome a API do NLW Agents Server:
 - **Endpoint**: `http://localhost:3333`
-- **Rotas utilizadas**: `/rooms`
+- **Rotas utilizadas**: 
+  - `GET /rooms` - Listagem de salas
+  - `POST /rooms/:roomId/questions` - Criação de perguntas
 - **Gerenciamento**: TanStack Query para cache e sincronização
+- **Mutations**: Sistema completo de criação de perguntas com invalidação de cache
 
 ## 📝 Estrutura de Rotas
 
@@ -129,10 +134,13 @@ letmeask-agents-web/
 │   │       └── textarea.tsx     # Componente de textarea
 │   ├── http/                    # Camada de comunicação com API
 │   │   ├── types/               # Tipos TypeScript para API
-│   │   │   ├── create-room-request.ts  # Tipo de requisição de criação
-│   │   │   ├── create-room-response.ts # Tipo de resposta de criação
-│   │   │   └── get-rooms-response.ts   # Tipo de resposta de listagem
+│   │   │   ├── create-room-request.ts     # Tipo de requisição de criação de sala
+│   │   │   ├── create-room-response.ts    # Tipo de resposta de criação de sala
+│   │   │   ├── create-question-request.ts # Tipo de requisição de criação de pergunta
+│   │   │   ├── create-question-response.ts# Tipo de resposta de criação de pergunta
+│   │   │   └── get-rooms-response.ts      # Tipo de resposta de listagem de salas
 │   │   ├── use-create-room.ts   # Hook para criação de salas
+│   │   ├── use-create-question.ts # Hook para criação de perguntas
 │   │   └── use-rooms.ts         # Hook para listagem de salas
 │   ├── lib/                     # Utilitários e configurações
 │   │   ├── dayjs.ts            # Configuração do Day.js
