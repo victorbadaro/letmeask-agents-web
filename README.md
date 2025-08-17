@@ -1,185 +1,185 @@
 # NLW Agents Web
 
-Interface web desenvolvida durante o evento da **Rocketseat** para gerenciar salas com agentes inteligentes.
+Web interface developed during the **Rocketseat** event to manage rooms with intelligent agents.
 
-## 🚀 Tecnologias Utilizadas
+## 🚀 Technologies Used
 
-- **React 19** - Biblioteca para interfaces de usuário
-- **TypeScript** - Tipagem estática
-- **Vite** - Build tool e bundler moderno
-- **React Router DOM** - Roteamento para SPAs
-- **TanStack Query** - Gerenciamento de estado para requisições
-- **React Hook Form** - Gerenciamento de formulários
-- **Zod** - Validação de schemas
-- **Day.js** - Manipulação de datas
-- **Web APIs** - MediaRecorder e getUserMedia para captura de áudio
-- **Tailwind CSS v4** - Framework CSS utilitário
-- **shadcn/ui** - Componentes UI reutilizáveis
-- **Lucide React** - Ícones modernos
-- **Biome** - Linter e formatador de código
+- **React 19** - Library for user interfaces
+- **TypeScript** - Static typing
+- **Vite** - Modern build tool and bundler
+- **React Router DOM** - Routing for SPAs
+- **TanStack Query** - State management for requests
+- **React Hook Form** - Form management
+- **Zod** - Schema validation
+- **Day.js** - Date manipulation
+- **Web APIs** - MediaRecorder and getUserMedia for audio capture
+- **Tailwind CSS v4** - Utility CSS framework
+- **shadcn/ui** - Reusable UI components
+- **Lucide React** - Modern icons
+- **Biome** - Code linter and formatter
 
-## 🏢️ Arquitetura e Padrões
+## 🏢️ Architecture and Patterns
 
-- **SPA (Single Page Application)** com React Router
-- **Composition Pattern** com shadcn/ui
-- **Server State Management** com TanStack Query
-- **Optimistic Updates** para melhor experiência do usuário
-- **Real-time Audio Capture** com Web APIs nativas
-- **Utility-First CSS** com Tailwind CSS
+- **SPA (Single Page Application)** with React Router
+- **Composition Pattern** with shadcn/ui
+- **Server State Management** with TanStack Query
+- **Optimistic Updates** for better user experience
+- **Real-time Audio Capture** with native Web APIs
+- **Utility-First CSS** with Tailwind CSS
 - **Component-Based Architecture**
-- **TypeScript** para type safety
-- **Path Aliases** para imports organizados
+- **TypeScript** for type safety
+- **Path Aliases** for organized imports
 
-## 📋 Pré-requisitos
+## 📋 Prerequisites
 
 - Node.js 18+
-- npm, yarn ou pnpm
-- API do NLW Agents rodando em `http://localhost:3333`
+- npm, yarn or pnpm
+- NLW Agents API running on `http://localhost:3333`
 
-## ⚙️ Configuração e Setup
+## ⚙️ Configuration and Setup
 
-### 1. Clone o repositório
+### 1. Clone the repository
 ```bash
 git clone https://github.com/victorbadaro/letmeask-agents-web
 cd letmeask-agents-web
 ```
 
-### 2. Instale as dependências
+### 2. Install dependencies
 ```bash
 npm install
-# ou
+# or
 yarn install
-# ou
+# or
 pnpm install
 ```
 
-### 3. Inicie o servidor de desenvolvimento
+### 3. Start the development server
 ```bash
 npm run dev
-# ou
+# or
 yarn dev
-# ou
+# or
 pnpm dev
 ```
 
-A aplicação estará disponível em `http://localhost:5173`
+The application will be available at `http://localhost:5173`
 
-## 🔧 Scripts Disponíveis
+## 🔧 Available Scripts
 
-- `pnpm dev` - Inicia o servidor de desenvolvimento
-- `pnpm build` - Gera build de produção
-- `pnpm preview` - Visualiza o build de produção
+- `pnpm dev` - Starts the development server
+- `pnpm build` - Generates production build
+- `pnpm preview` - Previews the production build
 
-## 🎨 Componentes UI
+## 🎨 UI Components
 
-O projeto utiliza **shadcn/ui** com as seguintes configurações:
-- **Estilo**: New York
-- **Cor base**: Zinc
-- **Ícones**: Lucide React
-- **CSS Variables**: Habilitado
-- **Tema**: Suporte a dark/light mode
+The project uses **shadcn/ui** with the following configurations:
+- **Style**: New York
+- **Base color**: Zinc
+- **Icons**: Lucide React
+- **CSS Variables**: Enabled
+- **Theme**: Support for dark/light mode
 
-## 📱 Funcionalidades
+## 📱 Features
 
-### 🏠 Página Inicial
-- **Listagem de salas** - Visualiza todas as salas disponíveis com informações detalhadas
-- **Criação de salas** - Formulário para criar novas salas de perguntas e respostas
-- **Navegação entre salas** - Roteamento dinâmico com informações de data e quantidade de perguntas
-- **Interface responsiva** - Compatível com diferentes dispositivos
+### 🏠 Home Page
+- **Room listing** - View all available rooms with detailed information
+- **Room creation** - Form to create new question and answer rooms
+- **Navigation between rooms** - Dynamic routing with date information and question count
+- **Responsive interface** - Compatible with different devices
 
-### 🏷️ Salas Individuais
-- **Visualização de perguntas** - Lista todas as perguntas da sala com respostas da IA
-- **Formulário de perguntas** - Interface para adicionar novas perguntas com integração completa à API
-- **Criação de perguntas** - Sistema completo de POST para `/rooms/:roomId/questions` com validação
-- **Respostas automáticas** - IA gera respostas baseadas no conteúdo de áudio da sala
-- **Updates otimistas** - Interface responsíva com estado de carregamento durante geração de respostas
-- **Status de respostas** - Indicador visual do progresso de geração de respostas por IA
-- **Timestamps relativos** - Exibição de quando as perguntas foram criadas
-- **Sincronização automática** - Cache invalidado automaticamente após criação de perguntas
-- **Navegação** - Botão para retornar à página inicial e acesso à funcionalidade de áudio
+### 🏷️ Individual Rooms
+- **Question viewing** - Lists all questions in the room with AI responses
+- **Question form** - Interface to add new questions with complete API integration
+- **Question creation** - Complete POST system for `/rooms/:roomId/questions` with validation
+- **Automatic responses** - AI generates responses based on room audio content
+- **Optimistic updates** - Responsive interface with loading state during response generation
+- **Response status** - Visual indicator of AI response generation progress
+- **Relative timestamps** - Display of when questions were created
+- **Automatic synchronization** - Cache automatically invalidated after question creation
+- **Navigation** - Button to return to home page and access to audio functionality
 
-### 🎤 Gravação de Áudio
-- **Captura de áudio em tempo real** - Utiliza MediaRecorder API para gravação contínua
-- **Processamento em chunks** - Áudio é enviado em segmentos de 5 segundos
-- **Configuração de qualidade** - Otimizado com 64kbps e formato WebM
-- **Cancelamento de eco** - Echo cancellation e noise suppression habilitados
-- **Interface intuitiva** - Botões para iniciar/pausar gravação com feedback visual
-- **Upload automático** - Envio direto para API de transcrição e processamento
-- **Detecção de suporte** - Validação de compatibilidade do navegador
+### 🎤 Audio Recording
+- **Real-time audio capture** - Uses MediaRecorder API for continuous recording
+- **Chunk processing** - Audio is sent in 5-second segments
+- **Quality configuration** - Optimized with 64kbps and WebM format
+- **Echo cancellation** - Echo cancellation and noise suppression enabled
+- **Intuitive interface** - Buttons to start/pause recording with visual feedback
+- **Automatic upload** - Direct sending to transcription and processing API
+- **Support detection** - Browser compatibility validation
 
-### ⚡ Otimizações
-- **Carregamento otimizado** - Loading states e cache inteligente
-- **Validação de formulários** - Schemas Zod com React Hook Form
-- **Gerenciamento de estado** - TanStack Query para sincronização de dados
+### ⚡ Optimizations
+- **Optimized loading** - Loading states and intelligent cache
+- **Form validation** - Zod schemas with React Hook Form
+- **State management** - TanStack Query for data synchronization
 
-## 🌐 Integração com API
+## 🌐 API Integration
 
-A aplicação consome a API do NLW Agents Server:
+The application consumes the NLW Agents Server API:
 - **Endpoint**: `http://localhost:3333`
-- **Rotas utilizadas**: 
-  - `GET /rooms` - Listagem de salas
-  - `GET /rooms/:roomId/questions` - Listação de perguntas da sala
-  - `POST /rooms/:roomId/questions` - Criação de perguntas com respostas automáticas
-  - `POST /rooms/:roomId/audio` - Upload de áudio para transcrição
-- **Gerenciamento**: TanStack Query para cache e sincronização
-- **Mutations**: Sistema completo de criação de perguntas com updates otimistas
-- **File Upload**: FormData para envio de arquivos de áudio
+- **Routes used**: 
+  - `GET /rooms` - Room listing
+  - `GET /rooms/:roomId/questions` - Room question listing
+  - `POST /rooms/:roomId/questions` - Question creation with automatic responses
+  - `POST /rooms/:roomId/audio` - Audio upload for transcription
+- **Management**: TanStack Query for cache and synchronization
+- **Mutations**: Complete question creation system with optimistic updates
+- **File Upload**: FormData for sending audio files
 
-## 📝 Estrutura de Rotas
+## 📝 Route Structure
 
-- `/` - Página inicial com listagem de salas
-- `/room/:roomId` - Página individual da sala com perguntas e respostas
-- `/room/:roomId/audio` - Página de gravação de áudio
+- `/` - Home page with room listing
+- `/room/:roomId` - Individual room page with questions and answers
+- `/room/:roomId/audio` - Audio recording page
 
-## 📁 Estrutura de Pastas
+## 📁 Folder Structure
 
 ```
 letmeask-agents-web/
-├── public/                       # Arquivos públicos estáticos
-├── src/                         # Código fonte da aplicação
-│   ├── components/              # Componentes React reutilizáveis
-│   │   ├── create-room-form.tsx # Formulário de criação de salas
-│   │   ├── question-form.tsx    # Formulário para fazer perguntas
-│   │   ├── question-item.tsx    # Item individual de pergunta/resposta
-│   │   ├── room-list.tsx        # Lista de salas disponíveis
-│   │   └── ui/                  # Componentes UI do shadcn/ui
-│   │       ├── badge.tsx        # Componente de badge/etiqueta
-│   │       ├── button.tsx       # Componente de botão
-│   │       ├── card.tsx         # Componente de cartão
-│   │       ├── form.tsx         # Componentes de formulário
-│   │       ├── input.tsx        # Componente de input
-│   │       ├── label.tsx        # Componente de label
-│   │       └── textarea.tsx     # Componente de textarea
-│   ├── http/                    # Camada de comunicação com API
-│   │   ├── types/               # Tipos TypeScript para API
-│   │   │   ├── create-room-request.ts     # Tipo de requisição de criação de sala
-│   │   │   ├── create-room-response.ts    # Tipo de resposta de criação de sala
-│   │   │   ├── create-question-request.ts # Tipo de requisição de criação de pergunta
-│   │   │   ├── create-question-response.ts# Tipo de resposta de criação de pergunta
-│   │   │   └── get-rooms-response.ts      # Tipo de resposta de listagem de salas
-│   │   ├── use-create-room.ts   # Hook para criação de salas
-│   │   ├── use-create-question.ts # Hook para criação de perguntas
-│   │   └── use-rooms.ts         # Hook para listagem de salas
-│   ├── lib/                     # Utilitários e configurações
-│   │   ├── dayjs.ts            # Configuração do Day.js
-│   │   └── utils.ts            # Funções auxiliares
-│   ├── pages/                   # Páginas da aplicação
-│   │   ├── create-room.tsx      # Página inicial com criação e listagem
-│   │   ├── room.tsx             # Página individual da sala
-│   │   └── record-room-audio.tsx# Página de gravação de áudio
-│   ├── app.tsx                  # Componente principal da aplicação
-│   ├── main.tsx                 # Ponto de entrada da aplicação
-│   ├── index.css               # Estilos globais e Tailwind
-│   └── vite-env.d.ts           # Declarações de tipos do Vite
-├── .vscode/                     # Configurações do VS Code
-├── components.json              # Configuração do shadcn/ui
-├── package.json                 # Dependências e scripts
-├── pnpm-lock.yaml              # Lock file do pnpm
-├── tsconfig.json               # Configuração do TypeScript
-├── vite.config.ts              # Configuração do Vite
-└── biome.jsonc                 # Configuração do Biome
+├── public/                       # Static public files
+├── src/                         # Application source code
+│   ├── components/              # Reusable React components
+│   │   ├── create-room-form.tsx # Room creation form
+│   │   ├── question-form.tsx    # Form for asking questions
+│   │   ├── question-item.tsx    # Individual question/answer item
+│   │   ├── room-list.tsx        # List of available rooms
+│   │   └── ui/                  # shadcn/ui UI components
+│   │       ├── badge.tsx        # Badge/label component
+│   │       ├── button.tsx       # Button component
+│   │       ├── card.tsx         # Card component
+│   │       ├── form.tsx         # Form components
+│   │       ├── input.tsx        # Input component
+│   │       ├── label.tsx        # Label component
+│   │       └── textarea.tsx     # Textarea component
+│   ├── http/                    # API communication layer
+│   │   ├── types/               # TypeScript types for API
+│   │   │   ├── create-room-request.ts     # Room creation request type
+│   │   │   ├── create-room-response.ts    # Room creation response type
+│   │   │   ├── create-question-request.ts # Question creation request type
+│   │   │   ├── create-question-response.ts# Question creation response type
+│   │   │   └── get-rooms-response.ts      # Room listing response type
+│   │   ├── use-create-room.ts   # Hook for room creation
+│   │   ├── use-create-question.ts # Hook for question creation
+│   │   └── use-rooms.ts         # Hook for room listing
+│   ├── lib/                     # Utilities and configurations
+│   │   ├── dayjs.ts            # Day.js configuration
+│   │   └── utils.ts            # Helper functions
+│   ├── pages/                   # Application pages
+│   │   ├── create-room.tsx      # Home page with creation and listing
+│   │   ├── room.tsx             # Individual room page
+│   │   └── record-room-audio.tsx# Audio recording page
+│   ├── app.tsx                  # Main application component
+│   ├── main.tsx                 # Application entry point
+│   ├── index.css               # Global styles and Tailwind
+│   └── vite-env.d.ts           # Vite type declarations
+├── .vscode/                     # VS Code settings
+├── components.json              # shadcn/ui configuration
+├── package.json                 # Dependencies and scripts
+├── pnpm-lock.yaml              # pnpm lock file
+├── tsconfig.json               # TypeScript configuration
+├── vite.config.ts              # Vite configuration
+└── biome.jsonc                 # Biome configuration
 ```
 
 ---
 
-Desenvolvido com ❤️ durante o evento NLW da Rocketseat
+Developed with ❤️ during the Rocketseat NLW event
