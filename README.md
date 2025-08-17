@@ -12,16 +12,19 @@ Interface web desenvolvida durante o evento da **Rocketseat** para gerenciar sal
 - **React Hook Form** - Gerenciamento de formulários
 - **Zod** - Validação de schemas
 - **Day.js** - Manipulação de datas
+- **Web APIs** - MediaRecorder e getUserMedia para captura de áudio
 - **Tailwind CSS v4** - Framework CSS utilitário
 - **shadcn/ui** - Componentes UI reutilizáveis
 - **Lucide React** - Ícones modernos
 - **Biome** - Linter e formatador de código
 
-## 🏗️ Arquitetura e Padrões
+## 🏢️ Arquitetura e Padrões
 
 - **SPA (Single Page Application)** com React Router
 - **Composition Pattern** com shadcn/ui
 - **Server State Management** com TanStack Query
+- **Optimistic Updates** para melhor experiência do usuário
+- **Real-time Audio Capture** com Web APIs nativas
 - **Utility-First CSS** com Tailwind CSS
 - **Component-Based Architecture**
 - **TypeScript** para type safety
@@ -85,13 +88,24 @@ O projeto utiliza **shadcn/ui** com as seguintes configurações:
 - **Interface responsiva** - Compatível com diferentes dispositivos
 
 ### 🏷️ Salas Individuais
-- **Visualização de perguntas** - Lista todas as perguntas da sala
+- **Visualização de perguntas** - Lista todas as perguntas da sala com respostas da IA
 - **Formulário de perguntas** - Interface para adicionar novas perguntas com integração completa à API
 - **Criação de perguntas** - Sistema completo de POST para `/rooms/:roomId/questions` com validação
+- **Respostas automáticas** - IA gera respostas baseadas no conteúdo de áudio da sala
+- **Updates otimistas** - Interface responsíva com estado de carregamento durante geração de respostas
 - **Status de respostas** - Indicador visual do progresso de geração de respostas por IA
 - **Timestamps relativos** - Exibição de quando as perguntas foram criadas
 - **Sincronização automática** - Cache invalidado automaticamente após criação de perguntas
 - **Navegação** - Botão para retornar à página inicial e acesso à funcionalidade de áudio
+
+### 🎤 Gravação de Áudio
+- **Captura de áudio em tempo real** - Utiliza MediaRecorder API para gravação contínua
+- **Processamento em chunks** - Áudio é enviado em segmentos de 5 segundos
+- **Configuração de qualidade** - Otimizado com 64kbps e formato WebM
+- **Cancelamento de eco** - Echo cancellation e noise suppression habilitados
+- **Interface intuitiva** - Botões para iniciar/pausar gravação com feedback visual
+- **Upload automático** - Envio direto para API de transcrição e processamento
+- **Detecção de suporte** - Validação de compatibilidade do navegador
 
 ### ⚡ Otimizações
 - **Carregamento otimizado** - Loading states e cache inteligente
@@ -104,14 +118,18 @@ A aplicação consome a API do NLW Agents Server:
 - **Endpoint**: `http://localhost:3333`
 - **Rotas utilizadas**: 
   - `GET /rooms` - Listagem de salas
-  - `POST /rooms/:roomId/questions` - Criação de perguntas
+  - `GET /rooms/:roomId/questions` - Listação de perguntas da sala
+  - `POST /rooms/:roomId/questions` - Criação de perguntas com respostas automáticas
+  - `POST /rooms/:roomId/audio` - Upload de áudio para transcrição
 - **Gerenciamento**: TanStack Query para cache e sincronização
-- **Mutations**: Sistema completo de criação de perguntas com invalidação de cache
+- **Mutations**: Sistema completo de criação de perguntas com updates otimistas
+- **File Upload**: FormData para envio de arquivos de áudio
 
 ## 📝 Estrutura de Rotas
 
 - `/` - Página inicial com listagem de salas
-- `/room/:roomId` - Página individual da sala
+- `/room/:roomId` - Página individual da sala com perguntas e respostas
+- `/room/:roomId/audio` - Página de gravação de áudio
 
 ## 📁 Estrutura de Pastas
 
@@ -147,7 +165,8 @@ letmeask-agents-web/
 │   │   └── utils.ts            # Funções auxiliares
 │   ├── pages/                   # Páginas da aplicação
 │   │   ├── create-room.tsx      # Página inicial com criação e listagem
-│   │   └── room.tsx             # Página individual da sala
+│   │   ├── room.tsx             # Página individual da sala
+│   │   └── record-room-audio.tsx# Página de gravação de áudio
 │   ├── app.tsx                  # Componente principal da aplicação
 │   ├── main.tsx                 # Ponto de entrada da aplicação
 │   ├── index.css               # Estilos globais e Tailwind
